@@ -4,6 +4,29 @@
   const params = $page.url.searchParams;
 </script>
 
+<svelte:head>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+      row-gap: 2rem;
+    }
+
+    fieldset {
+      display: grid;
+      padding: 1.5rem;
+    }
+
+    label {
+      display: grid;
+    }
+
+    label + label {
+      margin-block-start: 1rem;
+    }
+  </style>
+</svelte:head>
+
 <form method="POST">
   <fieldset>
     <legend>English</legend>
