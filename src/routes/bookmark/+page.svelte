@@ -40,7 +40,7 @@
     </label>
     <label>
       Link locale
-      <input name="en[link_locale]" type="text" />
+      <input name="en[link_locale]" type="text" value={params.get('lang')} />
     </label>
     <label>
       Tags
@@ -64,7 +64,7 @@
     </label>
     <label>
       Locale du lien
-      <input name="fr[link_locale]" type="text" />
+      <input name="fr[link_locale]" type="text" value={params.get('lang')} />
     </label>
     <label>
       Labels
