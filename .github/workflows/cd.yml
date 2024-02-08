@@ -35,4 +35,4 @@ jobs:
           SSH_HOST: ${{ secrets.HOSTNAME }}
           SSH_PORT: ${{ secrets.PORT }}
       - name: Deploy to VPS with SSH
-        run: rsync -avrzh --update --delete ./build/ ${{ secrets.USERNAME }}@prod_server:${{ secrets.DEPLOY_DIR }}
+        run: rsync -avzh --update --delete ./build/ ${{ secrets.USERNAME }}@prod_server:${{ secrets.DEPLOY_DIR }}
