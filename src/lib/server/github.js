@@ -1,9 +1,9 @@
 import { graphql } from '@octokit/graphql';
-import { GH_API_TOKEN, REPO_OWNER, REPO_NAME, REPO_BRANCH } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 const graphqlWithAuth = graphql.defaults({
   headers: {
-    authorization: `token ${GH_API_TOKEN}`,
+    authorization: `token ${env.GH_API_TOKEN}`,
   },
 });
 
@@ -27,9 +27,9 @@ export async function getOid() {
     }
     `,
     {
-      repoOwner: REPO_OWNER,
-      repoName: REPO_NAME,
-      branchRef: REPO_BRANCH,
+      repoOwner: env.REPO_OWNER,
+      repoName: env.REPO_NAME,
+      branchRef: env.REPO_BRANCH,
     },
   );
   return repository.ref.target.history.nodes[0].oid;
@@ -38,8 +38,8 @@ export async function getOid() {
 export async function commit(oid, message, changes) {
   const commitOnBranchInput = {
     branch: {
-      repositoryNameWithOwner: `${REPO_OWNER}/${REPO_NAME}`,
-      branchName: REPO_BRANCH,
+      repositoryNameWithOwner: `${env.REPO_OWNER}/${env.REPO_NAME}`,
+      branchName: env.REPO_BRANCH,
     },
     message: {
       headline: message,
