@@ -1,4 +1,4 @@
-import { commit, getOid } from '$lib/server/github';
+import { GHGraphQl } from '$lib/server/github';
 import {
   getItemsPerLocale,
   getFrontmatter,
@@ -34,7 +34,8 @@ export const actions = {
     const bookmarks = getItemsPerLocale(formData.entries());
     const changes = defineCommitChanges('bookmarks', bookmarks, getFileContent);
 
-    const oid = await getOid();
-    const commitUrl = await commit(oid, 'Create a new bookmark', changes);
+    const ghql = new GHGraphQl(formData.get('gh_token'));
+    const oid = await ghql.getOid();
+    const commitUrl = await ghql.commit(oid, 'Create a new bookmark', changes);
   },
 };

@@ -76,5 +76,10 @@
     </label>
   </fieldset>
 
+  <label>
+    GitHub token
+    <input type="text" name="gh_token" />
+  </label>
+
   <button type="submit">Create the bookmark</button>
 </form>
