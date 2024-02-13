@@ -16,6 +16,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+      - name: Prepare build to be deployed
+        run: cp package.json ./build/
       - name: Configure SSH
         run: |
           mkdir -p ~/.ssh/
